@@ -69,3 +69,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Photon Assets
+/[Aa]ssets/[Pp]hoton/*
+/[Aa]ssets/[Pp]hoton.meta
+
+!/[Aa]ssets/[Pp]hoton/[Pp]hoton[Uu]nity[Nn]etworking/
+/[Aa]ssets/[Pp]hoton/[Pp]hoton[Uu]nity[Nn]etworking/*
+
+!/[Aa]ssets/[Pp]hoton/[Pp]hoton[Uu]nity[Nn]etworking/Resources
