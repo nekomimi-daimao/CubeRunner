@@ -29,7 +29,10 @@ namespace Runtime
                 anchorWithMemo.Memo = $"{actorNr}{Environment.NewLine}{Speed}";
             }
 
-            RunnerLoop(this.GetCancellationTokenOnDestroy()).Forget();
+            if (PhotonNetwork.LocalPlayer.ActorNumber == actorNr)
+            {
+                RunnerLoop(this.GetCancellationTokenOnDestroy()).Forget();
+            }
         }
 
         public void OnPreNetDestroy(PhotonView rootView)
@@ -42,8 +45,8 @@ namespace Runtime
         [SerializeField]
         private Renderer cubeRenderer;
 
-        private const float SpeedMin = 10f;
-        private const float SpeedMax = 20f;
+        private const float SpeedMin = 4f;
+        private const float SpeedMax = 10f;
         public float Speed = SpeedMin;
 
         private const float ChangeDistance = 0.2f * 0.2f;
