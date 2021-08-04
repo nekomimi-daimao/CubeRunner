@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -26,7 +25,7 @@ namespace Runtime
             var anchorWithMemo = GetComponentInChildren<AnchorWithMemo>();
             if (anchorWithMemo != null)
             {
-                anchorWithMemo.Memo = $"{actorNr}{Environment.NewLine}{Speed}";
+                anchorWithMemo.Memo = actorNr.ToString();
             }
 
             if (PhotonNetwork.LocalPlayer.ActorNumber == actorNr)
@@ -51,6 +50,9 @@ namespace Runtime
 
         private const float ChangeDistance = 0.2f * 0.2f;
 
+        private const float RotateMin = 30f;
+        private const float RotateMax = 100f;
+
         private async UniTaskVoid RunnerLoop(CancellationToken token)
         {
             var relayRoot = GameObject.FindWithTag("Respawn")?.transform;
@@ -68,9 +70,10 @@ namespace Runtime
                 })
                 .ToArray();
 
-            var ts = this.transform;
-
             var index = 0;
+            var rotate = RotateMin;
+
+            var ts = this.transform;
 
             while (true)
             {
@@ -88,6 +91,7 @@ namespace Runtime
                     Time.deltaTime * Speed);
 
                 ts.position = moveTowards;
+                ts.Rotate(Vector3.up, Time.deltaTime * rotate);
 
                 if (Vector3.SqrMagnitude(relayPoint - moveTowards) <= ChangeDistance)
                 {
@@ -96,6 +100,8 @@ namespace Runtime
                     {
                         index = 0;
                     }
+
+                    rotate = UnityEngine.Random.Range(RotateMin, RotateMax) * ((UnityEngine.Random.value > 0.5f) ? 1 : -1);
                 }
             }
         }
