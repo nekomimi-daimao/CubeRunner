@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ffa2beb34d34edf905a87aa10892c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeRenderer: {fileID: 14967076912879352}
+  Speed: 10
 --- !u!114 &-70709726378672069
 MonoBehaviour:
   m_ObjectHideFlags: 0

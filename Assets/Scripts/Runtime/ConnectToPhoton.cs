@@ -42,7 +42,7 @@ namespace Runtime
                 () => PhotonNetwork.InRoom,
                 cancellationToken: token);
 
-            PhotonNetwork.Instantiate("", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate("", Vector3.one, Quaternion.identity);
 
             if (!cancelSource.IsCancellationRequested)
             {
